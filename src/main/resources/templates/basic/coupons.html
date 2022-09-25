@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>쿠폰 목록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    th:onclick="|location.href='@{/coupons/add}'|"
+                    type="button">쿠폰 등록</button>
+        </div>
+            <button class="btn btn-primary float-end"
+                    th:onclick="|location.href='@{/coupons/read-qrcode}'|"
+                    type="button">QR 코드 조회</button>
+        <div>
+
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>쿠폰 이름</th>
+                <th>휴대폰 번호</th>
+                <th>사용 여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="coupon : ${coupons}">
+                <td th:text="${coupon.couponName}"></td>
+                <td th:text="${coupon.phoneNumber}"></td>
+                <td th:if="${coupon.usedYN == false}" style="color: #0a53be">사용가능</td>
+                <td th:if="${coupon.usedYN == true}" style="color: #6a1a21">사용불가</td>
+                <td th:text="${coupon.code}"></td><!--TODO: 테스트용, 삭제 필수-->
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>

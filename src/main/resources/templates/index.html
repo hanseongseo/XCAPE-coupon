@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <img th:src="@{'data:image/jpeg;base64, '+${qrCode}}"  alt=""/>
+
+  <a id="create-kakao-link-btn" href="javascript:;">
+    <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+  </a>
+
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script type="text/javascript">
+    Kakao.init('1f8a4b8c26840398774342477f4b0553')
+    Kakao.Link.createDefaultButton({
+      container: '#create-kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: '쿠폰 테스트',
+        description: '쿠폰 테스트입니다.',
+        imageUrl:
+                '/Users/macbookpro/Desktop/스크린샷 2022-09-02 오후 6.49.41.png',
+        link: {
+          webUrl: '/Users/macbookpro/Desktop/스크린샷 2022-09-02 오후 6.49.41.png',
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+      ],
+    })
+</script>
+</body>
+</html>
